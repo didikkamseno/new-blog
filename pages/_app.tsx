@@ -2,21 +2,9 @@ import 'styles/global.css';
 import 'katex/dist/katex.min.css'
 import type { AppProps } from 'next/app';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import DarkTheme from 'themes/DarkTheme';
+import { lightTheme, darkTheme } from 'themes/Shared';
 import { SessionProvider } from 'next-auth/react';
-import { createTheme, NextUIProvider, theme as NextUITheme } from "@nextui-org/react"
-
-const lightTheme = createTheme({
-  type: 'light',
-  theme: { ...NextUITheme }
-
-})
-
-const darkTheme = createTheme({
-  type: 'dark',
-  theme: { ...DarkTheme }
-})
-
+import { NextUIProvider } from "@nextui-org/react"
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
