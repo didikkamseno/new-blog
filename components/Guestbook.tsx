@@ -13,6 +13,7 @@ import ErrorMessage from 'components/ErrorMessage';
 import { Modal, Input, Row, Checkbox, Button, Text, Loading } from "@nextui-org/react";
 
 function GuestbookEntry({ entry, user }) {
+  const { data: session } = useSession()
   const { mutate } = useSWRConfig();
   const deleteEntry = async (e) => {
     e.preventDefault();
@@ -28,10 +29,10 @@ function GuestbookEntry({ entry, user }) {
     <div className="flex flex-col space-y-2">
       <div className="prose dark:prose-dark w-full">{entry.body}</div>
       <div className="flex items-center space-x-1">
-       {user.image ? (
+       {session.user?.image ? (
               <Image
-                src={user.image}
-                alt={user.name}
+                src={session.user.image}
+                alt={session.user.name}
                 width={20}
                 height={20}
                 className="rounded-full"
