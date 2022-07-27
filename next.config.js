@@ -9,7 +9,9 @@ module.exports = withContentlayer({
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art
-      'pbs.twimg.com' // Twitter Profile Picture
+      'pbs.twimg.com', // Twitter Profile Picture
+      'lh3.googleusercontent.com', // Google Profile Pictures
+      'avatars.githubusercontent.com' //Github Profile Pictures
     ]
   },
   experimental: {

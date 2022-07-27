@@ -2,18 +2,17 @@ import React from "react";
 import Image from "next/image";
 import { useState, useRef, Suspense } from 'react';
 import { format } from 'date-fns';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import useSWR, { useSWRConfig } from 'swr';
 import Link from 'next/link'
 import fetcher from 'lib/fetcher';
-import { Form, FormState } from 'lib/types';
+import { FormState, Form } from 'lib/types';
 import SuccessMessage from 'components/SuccessMessage';
 import ErrorMessage from 'components/ErrorMessage';
 // import LoadingSpinner from 'components/LoadingSpinner';
-import { Modal, Input, Row, Checkbox, Button, Text, Loading } from "@nextui-org/react";
+import { Modal, Input, Row, Checkbox, Button, Text, Loading, Textarea } from "@nextui-org/react";
 
 function GuestbookEntry({ entry, user }) {
-  const { data: session } = useSession()
   const { mutate } = useSWRConfig();
   const deleteEntry = async (e) => {
     e.preventDefault();
@@ -26,27 +25,16 @@ function GuestbookEntry({ entry, user }) {
   };
 
   return (
+    <>
     <div className="flex flex-col space-y-2">
       <div className="prose dark:prose-dark w-full">{entry.body}</div>
       <div className="flex items-center space-x-1">
-       {session ? (
-           {session.user?.image ? (
-              <>
-              <Image
-                src={session.user.image}
-                alt={session.user.name}
-                width={20}
-                height={20}
-                className="rounded-full"
-              /> </>
-            ) : ( ' ' )}
-            ) : ( ' ' )}
         <p className="text-sm text-gray-500">{entry.created_by}</p>
         <span className=" text-gray-200 dark:text-gray-800">•</span>
         <p className="text-sm text-gray-400 dark:text-gray-600">
           {format(new Date(entry.updated_at), "d MMM yyyy 'at' h:mm bb")}
         </p>
-        {user && entry.created_by === user.name && (
+        {user && entry.created_by === user.name && entry.email === user.email && (
           <>
             <span className="text-gray-200 dark:text-gray-800">•</span>
             <button
@@ -59,6 +47,7 @@ function GuestbookEntry({ entry, user }) {
         )}
       </div>
     </div>
+    </>
   );
 }
 
@@ -192,8 +181,9 @@ export default function Guestbook({ fallbackData }) {
         </>
         )}
         {session?.user && (
+          <>
           <form className="relative my-4" onSubmit={leaveEntry}>
-            <input
+            <textarea
               ref={inputEl}
               aria-label="Your message"
               placeholder="Your message..."
@@ -201,12 +191,18 @@ export default function Guestbook({ fallbackData }) {
               className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             />
             <button
-              className="flex items-center justify-center absolute right-1 top-1 px-4 pt-1 font-medium h-8 bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-gray-100 rounded w-28"
+              className="flex items-center justify-center absolute right-1 bottom-4 px-4 pt-1 font-medium h-8 bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-gray-100 rounded w-28"
               type="submit"
             >
               {form.state === Form.Loading ? <Loading color="success" type="points" size="sm" /> : 'Sign'}
             </button>
           </form>
+          <div className="flex justify-between">
+          <p>Logged in as  {' '} 
+          {/* <Image className="rounded-full" width={20} height={20} src={session.user.image} alt={session.user.name} /> */}
+          <span className="text-green-500"> {session.user.name}</span></p><button className="text-pink-500 gap-1" onClick={() => signOut()}>Log out</button>
+          </div>
+          </>
         )}
         {form.state === Form.Error ? (
           <ErrorMessage>{form.message}</ErrorMessage>
