@@ -199,7 +199,8 @@ export default function Guestbook({ fallbackData }) {
         ) : form.state === Form.Success ? (
           <SuccessMessage>{form.message}</SuccessMessage>
         ) : (
-          
+          <p className="text-gray-900 dark:text-gray-100"> No spam, no ads, nothing bs.
+          </p>
         )}
       </div>
       <div className="mt-4 space-y-8">
