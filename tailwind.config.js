@@ -1,5 +1,5 @@
 const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: ['./pages/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx'],
@@ -37,7 +37,7 @@ module.exports = {
         }
       },
       grayscale: {
-        50: '50%',
+        50: '50%'
       },
       fontFamily: {
         sans: ['IBM Plex Sans', ...fontFamily.sans]

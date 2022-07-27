@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { useState, useRef, Suspense } from 'react';
 import { format } from 'date-fns';
 import { signIn, signOut, useSession } from 'next-auth/react';
@@ -9,21 +9,13 @@ import fetcher from 'lib/fetcher';
 import { FormState, Form } from 'lib/types';
 import SuccessMessage from 'components/SuccessMessage';
 import ErrorMessage from 'components/ErrorMessage';
-import cn from 'classnames';
+// import cn from 'classnames';
 // import LoadingSpinner from 'components/LoadingSpinner';
 import { Modal, Input, Row, Checkbox, Button, Text, Loading, Textarea } from "@nextui-org/react";
 
 function GuestbookEntry({ entry, user }) {
+  const [isDeleting, setisDeleting] = useState<boolean>();
   const { mutate } = useSWRConfig();
-  const deleteEntry = async (e) => {
-    e.preventDefault();
-
-    await fetch(`/api/guestbook/${entry.id}`, {
-      method: 'DELETE'
-    });
-
-    mutate('/api/guestbook');
-  };
 
   return (
     <>
@@ -38,12 +30,27 @@ function GuestbookEntry({ entry, user }) {
         {user && entry.created_by === user.name && entry.email === user.email && (
           <>
             <span className="text-gray-200 dark:text-gray-800">•</span>
-            <button
-              className="text-sm text-red-600 dark:text-red-400"
-              onClick={deleteEntry}
+            {isDeleting ? (
+          <>
+          <Loading color="error" size="sm" />
+          </>
+            ) : (
+              <button
+              className="text-sm text-red-500"
+              onClick={async (e) => {
+                e.preventDefault();
+                setisDeleting(true);
+
+                await fetch(`/api/guestbook/${entry.id}`, {
+                  method: "DELETE",
+                });
+
+                mutate("/api/guestbook");
+              }}
             >
               Delete
             </button>
+            )}
           </>
         )}
       </div>
@@ -96,7 +103,7 @@ export default function Guestbook({ fallbackData }) {
     mutate('/api/guestbook');
     setForm({
       state: Form.Success,
-      message: `Hooray! Thanks for signing my Guestbook.`
+      message: `Hooray! Thanks for signing the Guestbook.`
     });
   };
 
@@ -104,7 +111,7 @@ export default function Guestbook({ fallbackData }) {
     <>
       <div className="border border-blue-300 rounded p-6 my-4 w-full dark:border-gray-500 bg-blue-50 dark:bg-dark">
         <h5 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100">
-          Sign my Guestbook
+          Sign the Guestbook
         </h5>
         {!session && (
             <>
@@ -190,10 +197,10 @@ export default function Guestbook({ fallbackData }) {
               placeholder="Your message..."
               rows={3}
               required
-              className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md bg-blue-100 dark:bg-zinc-900 text-gray-900 dark:text-gray-100"
+              className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 border rounded-md bg-blue-50 dark:bg-zinc-900 text-gray-900 dark:text-gray-100"
             />
             <button
-              className="flex items-center border-b border-zinc-500 border justify-center absolute right-1 bottom-1 px-4 font-medium h-8 hover:dark:text-gray-700 bg-blue-200 dark:bg-gray-800 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to  text-gray-900 dark:text-gray-100 rounded-xl w-28"
+              className="flex items-center border-b border-zinc-500 border justify-center absolute right-1 bottom-1 px-4 font-medium h-8 hover:dark:text-gray-700 bg-yellow-100 dark:bg-gray-800 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to  text-gray-900 dark:text-gray-100 rounded-xl w-28"
               type="submit"
             >
               {form.state === Form.Loading ? <Loading color="success" type="points" size="sm" /> : 'Sign'}
@@ -202,7 +209,7 @@ export default function Guestbook({ fallbackData }) {
           <div className="flex justify-between">
           <p>Logged in as  {' '} 
           {/* <Image className="rounded-full" width={20} height={20} src={session.user.image} alt={session.user.name} /> */}
-          <span className="text-green-500"> {session.user.name}</span></p><button className="text-pink-500 gap-1" onClick={() => signOut()}>Log out</button>
+          <span className="text-green-500"> {session.user.name}</span></p><button className="text-red-500 gap-1" onClick={() => signOut()}>Log out</button>
           </div>
           </>
         )}
@@ -211,7 +218,7 @@ export default function Guestbook({ fallbackData }) {
         ) : form.state === Form.Success ? (
           <SuccessMessage>{form.message}</SuccessMessage>
         ) : (
-          <p className="text-gray-900 dark:text-gray-100 mt-2"> No spam, no ads, nothing bs.
+          <p className="text-gray-900 dark:text-gray-100 mt-2"> Leave a comment below for my future visitors. Feel free to write anything!
           </p>
         )}
       </div>
