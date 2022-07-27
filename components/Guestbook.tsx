@@ -127,12 +127,13 @@ export default function Guestbook({ fallbackData }) {
         </Modal.Header>
         <Modal.Body>  
         <Link
-            href="/api/auth/signin/github" passHref>
-          <button
-            className="font-semibold md:inline-block px-3 py-2 rounded-lg  border-b border-zinc-500 border bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to  hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to"
-            onClick={() => {
+            href="/api/auth/signin/github" >
+        <button
+            className="font-semibold justify-center md:inline-block px-3 py-2 rounded-lg  border-b border-zinc-500 border bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to  hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to"
+            onClick={(e) => {
             signIn('github');
             setIsLoadingGithub(true);
+            e.preventDefault();
             }}
           >
           {isLoadingGithub ? (
@@ -146,15 +147,16 @@ export default function Guestbook({ fallbackData }) {
                   </>
                 )
           }
-          </button>
-          </Link>
+        </button>
+        </Link>
         <Link
-          href="/api/auth/signin/google" passHref>
-           <button
+              href="/api/auth/signin/google">
+        <button
               className="font-semibold md:inline-block px-3 py-2 rounded-lg  border-b border-zinc-500 border bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to  hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to"
-              onClick={() => {
+              onClick={(e) => {
               signIn('google');
               setIsLoadingGoogle(true);
+              e.preventDefault();
             }}
           >
             {isLoadingGoogle ? (
@@ -163,11 +165,11 @@ export default function Guestbook({ fallbackData }) {
             </>
               ) : (
                   <> 
-                  <span className="font-semibold text-gray-900 dark:text-gray-900 ml-3">Log in with Google</span> 
+                  <span className="font-semibold text-gray-900 dark:text-gray-900 content-center">Log in with Google</span> 
                   </>
                   )
             }
-           </button>
+            </button>
         </Link>
         </Modal.Body>
         <Modal.Footer>
