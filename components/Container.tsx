@@ -21,7 +21,7 @@ function NavItem({ href, text }) {
           isActive
             ? 'font-semibold text-gray-800 dark:text-gray-800 bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to'
             : 'font-semibold text-gray-800 dark:text-gray-400',
-          'hidden font-semibold md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg  text-gray-800 dark:text-gray-200 hover:dark:text-gray-700 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to '          
+          'hidden font-semibold md:inline-block px-3 py-2 rounded-lg  text-gray-800 dark:text-gray-200 hover:dark:text-gray-700 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to'          
         )}
         onClick={() => {
           playpageChange()

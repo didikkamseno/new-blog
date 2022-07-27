@@ -6,11 +6,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  
   const session = await getSession({ req });
   const { id } = req.query;
-  const { email } = session.user;
-
+  
   const entry = await prisma.guestbook.findUnique({
     where: {
       id: Number(id)
@@ -21,12 +19,13 @@ export default async function handler(
     return res.json({
       id: entry.id.toString(),
       body: entry.body,
-      email: session?.user?.email === entry.email ? entry.email : null,
       created_by: entry.created_by,
       updated_at: entry.updated_at
     });
   }
 
+  const { email } = session.user;
+  
   if (!session || email !== entry.email) {
     return res.status(403).send('Unauthorized');
   }

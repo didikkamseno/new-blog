@@ -9,6 +9,7 @@ import fetcher from 'lib/fetcher';
 import { FormState, Form } from 'lib/types';
 import SuccessMessage from 'components/SuccessMessage';
 import ErrorMessage from 'components/ErrorMessage';
+import cn from 'classnames';
 // import LoadingSpinner from 'components/LoadingSpinner';
 import { Modal, Input, Row, Checkbox, Button, Text, Loading, Textarea } from "@nextui-org/react";
 
@@ -107,10 +108,8 @@ export default function Guestbook({ fallbackData }) {
         </h5>
         {!session && (
             <>
-                <div>
-      <button color="success" onClick={handler} className="text-gray-900 mt-2 mb-2 dark:text-gray-100">
-        Log in
-      </button>
+                <div className="pt-4">
+      <button onClick={handler} className='px-4 py-2 font-semibold text-gray-800 dark:text-gray-800 bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to  hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to rounded-lg'>Log in</button>
       <Modal
         closeButton
         blur
@@ -120,7 +119,7 @@ export default function Guestbook({ fallbackData }) {
       >
         <Modal.Header>
           <Text id="modal-title" size={18}>
-            Log in to {' '}
+            Continue to {' '}
             <Text b size={18}>
               Sign the Guestbook
             </Text>
@@ -129,47 +128,47 @@ export default function Guestbook({ fallbackData }) {
         <Modal.Body>  
         <Link
             href="/api/auth/signin/github" passHref>
-           <Button shadow color="gradient" auto
-                            onClick={() => {
-                            signIn('github');
-                            setIsLoadingGithub(true);
-                          }}
-                        >
-                          {isLoadingGithub ? (
-                          <>
-                          <Loading color="secondary" size="sm" />
-                          </>
-                            ) : (
-                                   <> 
-                                    <span className="text-gray-900 dark:text-gray-100 ml-3"> Log in with Github </span> 
-                                   <svg className='fill-current w-5 h-5 mr-3 mb-1' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path fill='currentColor' d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>                           
-                                   </>
-                               )
-                          }
-            </Button>
+          <button
+            className="font-semibold md:inline-block px-3 py-2 rounded-lg  border-b border-zinc-500 border bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to  hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to"
+            onClick={() => {
+            signIn('github');
+            setIsLoadingGithub(true);
+            }}
+          >
+          {isLoadingGithub ? (
+          <>
+          <Loading color="secondary" size="sm" />
+          </>
+            ) : (
+                  <> 
+                    <span className="font-semibold text-gray-900 dark:text-gray-900">Log in with Github         
+                    </span>
+                  </>
+                )
+          }
+          </button>
           </Link>
         <Link
-            href="/api/auth/signin/google" passHref>
-           <Button shadow color="gradient" auto
-                            onClick={() => {
-                            signIn('google');
-                            setIsLoadingGoogle(true);
-                          }}
-                        >
-                          {isLoadingGoogle ? (
-                          <>
-                          <Loading color="secondary" size="sm" />
-                          </>
-                            ) : (
-                                   <> 
-                                    <span className="text-gray-900 dark:text-gray-100 ml-3"> Log in with Google </span> 
-                                     <svg  className='fill-current w-4 h-4 mr-3 mb-1' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google</title><path fill='currentColor' d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
-  
-                                   </>
-                               )
-                          }
-            </Button>
-          </Link>
+          href="/api/auth/signin/google" passHref>
+           <button
+              className="font-semibold md:inline-block px-3 py-2 rounded-lg  border-b border-zinc-500 border bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to  hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to"
+              onClick={() => {
+              signIn('google');
+              setIsLoadingGoogle(true);
+            }}
+          >
+            {isLoadingGoogle ? (
+            <>
+            <Loading color="secondary" size="sm" />
+            </>
+              ) : (
+                  <> 
+                  <span className="font-semibold text-gray-900 dark:text-gray-900 ml-3">Log in with Google</span> 
+                  </>
+                  )
+            }
+           </button>
+        </Link>
         </Modal.Body>
         <Modal.Footer>
         <span className="my-1 text-gray-800 dark:text-gray-200">
@@ -189,10 +188,10 @@ export default function Guestbook({ fallbackData }) {
               placeholder="Your message..."
               rows={3}
               required
-              className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+              className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md bg-blue-100 dark:bg-zinc-900 text-gray-900 dark:text-gray-100"
             />
             <button
-              className="flex items-center justify-center absolute right-1 bottom-4 px-4 pt-1 font-medium h-8 bg-gray-200 dark:bg-gray-600 text-gray-900 dark:text-gray-100 rounded w-28"
+              className="flex items-center border-b border-zinc-500 border justify-center absolute right-1 bottom-1 px-4 font-medium h-8 hover:dark:text-gray-700 bg-blue-200 dark:bg-gray-800 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to  text-gray-900 dark:text-gray-100 rounded-xl w-28"
               type="submit"
             >
               {form.state === Form.Loading ? <Loading color="success" type="points" size="sm" /> : 'Sign'}

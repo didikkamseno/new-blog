@@ -14,8 +14,6 @@ export default async function handler(
       }
     });
     const session = await getSession({ req });
-    const { email, name } = session.user;
-  
     return res.json(
       entries.map((entry) => ({
         id: entry.id.toString(),
