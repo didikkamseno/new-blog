@@ -26,7 +26,16 @@ function GuestbookEntry({ entry, user }) {
   return (
     <div className="flex flex-col space-y-2">
       <div className="prose dark:prose-dark w-full">{entry.body}</div>
-      <div className="flex items-center space-x-3">
+      <div className="flex items-center space-x-1">
+       {user.image ? (
+              <Image
+                src={user.image}
+                alt={user.name}
+                width={20}
+                height={20}
+                className="rounded-full"
+              />
+            ) : ( ' ' )}
         <p className="text-sm text-gray-500">{entry.created_by}</p>
         <span className=" text-gray-200 dark:text-gray-800">•</span>
         <p className="text-sm text-gray-400 dark:text-gray-600">
