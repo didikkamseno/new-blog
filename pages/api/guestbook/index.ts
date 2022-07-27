@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
 import prisma from 'lib/prisma';
 
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -12,12 +13,14 @@ export default async function handler(
         updated_at: 'desc'
       }
     });
-
+    const session = await getSession({ req });
+    const { email, name } = session.user;
+  
     return res.json(
       entries.map((entry) => ({
         id: entry.id.toString(),
         body: entry.body,
-        email: entry.email,
+        email: session?.user?.email === entry.email ? entry.email : null,
         created_by: entry.created_by,
         updated_at: entry.updated_at
       }))
@@ -43,7 +46,6 @@ export default async function handler(
     return res.status(200).json({
       id: newEntry.id.toString(),
       body: newEntry.body,
-      email: newEntry.email,
       created_by: newEntry.created_by,
       updated_at: newEntry.updated_at
     });

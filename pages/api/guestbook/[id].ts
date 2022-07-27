@@ -6,8 +6,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  
   const session = await getSession({ req });
-
   const { id } = req.query;
   const { email } = session.user;
 
@@ -21,7 +21,7 @@ export default async function handler(
     return res.json({
       id: entry.id.toString(),
       body: entry.body,
-      email: entry.email,
+      email: session?.user?.email === entry.email ? entry.email : null,
       created_by: entry.created_by,
       updated_at: entry.updated_at
     });

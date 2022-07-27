@@ -108,9 +108,9 @@ export default function Guestbook({ fallbackData }) {
         {!session && (
             <>
                 <div>
-      <Button bordered color="success" auto onClick={handler} className="text-gray-900 mt-2 mb-2 dark:text-gray-100">
+      <button color="success" onClick={handler} className="text-gray-900 mt-2 mb-2 dark:text-gray-100">
         Log in
-      </Button>
+      </button>
       <Modal
         closeButton
         blur
@@ -187,6 +187,7 @@ export default function Guestbook({ fallbackData }) {
               ref={inputEl}
               aria-label="Your message"
               placeholder="Your message..."
+              rows={3}
               required
               className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             />
