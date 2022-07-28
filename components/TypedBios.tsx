@@ -21,7 +21,7 @@ const TypedBios = () => {
 
   return (
     <div>
-      <ul id="bios" className="hidden">
+      <ul id="bios" className="hidden text-base">
         <li>
           I live in <b className="font-medium">Ahmedabad, India.</b>
           {/* <Twemoji emoji="india-flag" /> */}

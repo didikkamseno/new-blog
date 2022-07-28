@@ -10,6 +10,7 @@ import TypedBios from 'components/TypedBios';
 
 export default function Home() {
   return (
+    <>
      <Suspense fallback={null}> 
       <Container>
           <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
@@ -18,9 +19,8 @@ export default function Home() {
                 <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
                   Kapil Chaudhary <span role='img' aria-label='waving-hand' className='wave animate-waving-hand'>👋</span>
                 </h1>
-                <h2 className="text-gray-700 dark:text-gray-200 mb-4 text-lg">
-                  A research scholar in fractional-order mathematical modelling working as{' '}
-                  <span className="font-semibold text-lg ">Junior research fellow (CSIR) India.</span>
+                <h2 className="text-gray-700 dark:text-gray-200 mb-4 text-base">
+                  <span className="font-semibold">Junior research fellow (CSIR) at Gujarat university 🇮🇳.</span>
                 </h2>
                  <TypedBios /> 
                 <p className="text-gray-600 dark:text-gray-400 mb-16">
@@ -140,5 +140,6 @@ export default function Home() {
           </div>
         </Container>
         </Suspense>
+      </>
   );
 }
