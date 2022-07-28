@@ -63,6 +63,7 @@ export default function Guestbook({ fallbackData }) {
   const { data: session } = useSession();
   const [isLoadingGoogle, setIsLoadingGoogle] = useState<boolean>();
   const [isLoadingGithub, setIsLoadingGithub] = useState<boolean>();
+  const [isLoadingLogout, setIsLoadingLogout] = useState<boolean>();
   const { mutate } = useSWRConfig();
   const [form, setForm] = useState<FormState>({ state: Form.Initial });
   const inputEl = useRef(null);
@@ -197,20 +198,35 @@ export default function Guestbook({ fallbackData }) {
               placeholder="Your message..."
               rows={3}
               required
-              className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 border rounded-md bg-blue-50 dark:bg-zinc-900 text-gray-900 dark:text-gray-100"
+              className="sm:pr-24 pr-42 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 border rounded-md bg-blue-50 dark:bg-zinc-900 text-gray-900 dark:text-gray-100"
             />
             <button
-              className="flex items-center border-b border-zinc-500 border justify-center absolute right-1 bottom-1 px-4 font-medium h-8 hover:dark:text-gray-700 bg-yellow-100 dark:bg-gray-800 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to  text-gray-900 dark:text-gray-100 rounded-xl w-28"
+              className="flex items-center border-b border-zinc-500 border justify-center absolute right-1 bottom-1 px-4 font-medium h-8 hover:dark:text-gray-700 bg-yellow-100 dark:bg-gray-800 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to  text-gray-900 dark:text-gray-100 rounded-xl"
               type="submit"
             >
               {form.state === Form.Loading ? <Loading color="success" type="points" size="sm" /> : 'Sign'}
             </button>
           </form>
-          <div className="flex justify-between">
-          <p>Logged in as  {' '} 
-          {/* <Image className="rounded-full" width={20} height={20} src={session.user.image} alt={session.user.name} /> */}
-          <span className="text-green-500"> {session.user.name}</span></p><button className="text-red-500 gap-1" onClick={() => signOut()}>Log out</button>
-          </div>
+              <>
+              <div className="flex justify-between">
+              <p>Logged in as  {' '} 
+              {/* <Image className="rounded-full" width={20} height={20} src={session.user.image} alt={session.user.name} /> */}
+              <span className="text-green-500"> {session.user.name}</span></p>
+              {isLoadingLogout ? (
+                <>
+                <Loading color='error' size="xs" />
+                </>
+              ) : (
+                <>
+                <button className="text-red-500 gap-1" onClick={() => {
+                  signOut();
+                  setIsLoadingLogout(true);
+                  }}>Log out</button>
+                </>
+              )
+              }
+              </div>
+              </>
           </>
         )}
         {form.state === Form.Error ? (
