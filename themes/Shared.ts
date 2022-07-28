@@ -1,14 +1,10 @@
 import { createTheme } from '@nextui-org/react';
 
-const fonts = {
-  sans: 'IBM Plex Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
-};
 
 export const lightTheme = createTheme({
   type: 'light',
   className: 'light',
   theme: {
-    fonts,
     colors: {
       white: '#ffffff',
     black: '#000000',
@@ -29,7 +25,24 @@ export const lightTheme = createTheme({
     primarySolidHover: '$blue700',
     primarySolidContrast: '$white', // commonly used for text inside the component
     primaryShadow: '$blue500'
-    }
+    },
+    "space": {},
+    "fontSizes": {
+      xs: '1.5rem', /* 12px */
+      sm: '1.75rem', /* 14px */
+      base: '1.5rem', /* 16px */
+      md: '1.5rem', /* 16px */
+      lg: '1.625rem', /* 18px */
+      xl: '1.75rem', /* 20px */
+      xl2: '2rem', /* 24px */
+      xl3: '2.375rem', /* 30px */
+      xl4: '2.75rem', /* 36px */
+      xl5: '3.5rem', /* 48px */
+      xl6: '4.25rem', /* 60px */
+      xl7: '5rem', /* 72px */
+      xl8: '6.5rem', /* 96px */
+      xl9: '8.5rem', /* 128px */
+    },
   }
 });
 
@@ -37,7 +50,6 @@ export const darkTheme = createTheme({
   type: 'dark',
   className: 'dark',
   "theme": {
-    fonts,
     "colors": {
       white: '#ffffff',
       dark: '#131415',
@@ -62,20 +74,20 @@ export const darkTheme = createTheme({
     },
     "space": {},
     "fontSizes": {
-      xs: '0.75rem', /* 12px */
-      sm: '0.875rem', /* 14px */
-      base: '1rem', /* 16px */
-      md: '1rem', /* 16px */
-      lg: '1.125rem', /* 18px */
-      xl: '1.25rem', /* 20px */
-      xl2: '1.5rem', /* 24px */
-      xl3: '1.875rem', /* 30px */
-      xl4: '2.25rem', /* 36px */
-      xl5: '3rem', /* 48px */
-      xl6: '3.75rem', /* 60px */
-      xl7: '4.5rem', /* 72px */
-      xl8: '6rem', /* 96px */
-      xl9: '8rem', /* 128px */
+      xs: '1.5rem', /* 12px */
+      sm: '1.75rem', /* 14px */
+      base: '1.5rem', /* 16px */
+      md: '1.5rem', /* 16px */
+      lg: '1.625rem', /* 18px */
+      xl: '1.75rem', /* 20px */
+      xl2: '2rem', /* 24px */
+      xl3: '2.375rem', /* 30px */
+      xl4: '2.75rem', /* 36px */
+      xl5: '3.5rem', /* 48px */
+      xl6: '4.25rem', /* 60px */
+      xl7: '5rem', /* 72px */
+      xl8: '6.5rem', /* 96px */
+      xl9: '8.5rem', /* 128px */
     },
     fontWeights: {
       hairline: 100,
