@@ -27,7 +27,7 @@ function NavItem({ href, text }) {
           playpageChange()
         }}
       >
-        <span className="capsize">{text}</span>
+        <span className="text-base capsize">{text}</span>
       </a>
     </NextLink>
   );
