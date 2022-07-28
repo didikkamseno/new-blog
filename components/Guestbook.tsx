@@ -11,7 +11,7 @@ import SuccessMessage from 'components/SuccessMessage';
 import ErrorMessage from 'components/ErrorMessage';
 // import cn from 'classnames';
 // import LoadingSpinner from 'components/LoadingSpinner';
-import { Modal, Input, Row, Checkbox, Button, Text, Loading, Textarea } from "@nextui-org/react";
+import { Modal, Input, Row, Checkbox, Button, Text, Loading, Avatar, Textarea } from "@nextui-org/react";
 
 function GuestbookEntry({ entry, user }) {
   const [isDeleting, setisDeleting] = useState<boolean>();
@@ -21,7 +21,13 @@ function GuestbookEntry({ entry, user }) {
     <>
     <div className="flex flex-col space-y-2">
       <div className="prose dark:prose-dark w-full">{entry.body}</div>
-      <div className="flex items-center space-x-1">
+      <div className="flex  items-center space-x-1">
+        {/* <Avatar 
+          text={entry.created_by} 
+          size="sm"
+          color="gradient" 
+          textColor="white"
+           /> */}
         <p className="text-sm text-gray-500">{entry.created_by}</p>
         <span className=" text-gray-200 dark:text-gray-800">•</span>
         <p className="text-sm text-gray-400 dark:text-gray-600">
