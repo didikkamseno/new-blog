@@ -75,7 +75,7 @@ export default function Container(props) {
         )}
       </Head>
     <div className="bg-gray-50 dark:bg-gray-900">
-      <div className="top-0 overflow-hidden sticky z-10 backdrop-blur supports-backdrop-blur:bg-gray-50/80 supports-backdrop-blur:dark:bg-gray-900/80 flex flex-col px-8 justify-between">
+      <div className="top-0 sticky z-10 backdrop-blur supports-backdrop-blur:bg-gray-50/80 supports-backdrop-blur:dark:bg-gray-900/80 flex flex-col px-8 justify-between">
         <nav className="flex items-center justify-between w-full relative max-w-2xl mx-auto pt-5 pb-2 sm:pb-6">
           <a href="#skip" className="skip-nav">
             Skip to content
