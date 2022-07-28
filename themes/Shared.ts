@@ -27,22 +27,6 @@ export const lightTheme = createTheme({
     primaryShadow: '$blue500'
     },
     "space": {},
-    "fontSizes": {
-      xs: '1.5rem', /* 12px */
-      sm: '1.75rem', /* 14px */
-      base: '1.5rem', /* 16px */
-      md: '1.5rem', /* 16px */
-      lg: '1.625rem', /* 18px */
-      xl: '1.75rem', /* 20px */
-      xl2: '2rem', /* 24px */
-      xl3: '2.375rem', /* 30px */
-      xl4: '2.75rem', /* 36px */
-      xl5: '3.5rem', /* 48px */
-      xl6: '4.25rem', /* 60px */
-      xl7: '5rem', /* 72px */
-      xl8: '6.5rem', /* 96px */
-      xl9: '8.5rem', /* 128px */
-    },
   }
 });
 
@@ -73,22 +57,6 @@ export const darkTheme = createTheme({
     primaryShadow: '$blue500'
     },
     "space": {},
-    "fontSizes": {
-      xs: '1.5rem', /* 12px */
-      sm: '1.75rem', /* 14px */
-      base: '1.5rem', /* 16px */
-      md: '1.5rem', /* 16px */
-      lg: '1.625rem', /* 18px */
-      xl: '1.75rem', /* 20px */
-      xl2: '2rem', /* 24px */
-      xl3: '2.375rem', /* 30px */
-      xl4: '2.75rem', /* 36px */
-      xl5: '3.5rem', /* 48px */
-      xl6: '4.25rem', /* 60px */
-      xl7: '5rem', /* 72px */
-      xl8: '6.5rem', /* 96px */
-      xl9: '8.5rem', /* 128px */
-    },
     fontWeights: {
       hairline: 100,
       thin: 200,
