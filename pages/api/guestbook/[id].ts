@@ -7,8 +7,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const session = await getSession({ req });
+
   const { id } = req.query;
-  
+  const { email } = session.user;
+
   const entry = await prisma.guestbook.findUnique({
     where: {
       id: Number(id)
@@ -24,8 +26,6 @@ export default async function handler(
     });
   }
 
-  const { email } = session.user;
-  
   if (!session || email !== entry.email) {
     return res.status(403).send('Unauthorized');
   }

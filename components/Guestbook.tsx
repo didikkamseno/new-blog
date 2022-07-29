@@ -1,5 +1,5 @@
 import React from "react";
-// import Image from "next/image";
+import Image from "next/image";
 import { useState, useRef, Suspense } from 'react';
 import { format } from 'date-fns';
 import { signIn, signOut, useSession } from 'next-auth/react';
@@ -22,12 +22,22 @@ function GuestbookEntry({ entry, user }) {
     <div className="flex flex-col space-y-2">
       <div className="prose dark:prose-dark w-full">{entry.body}</div>
       <div className="flex  items-center space-x-1">
-        {/* <Avatar 
-          text={entry.created_by} 
-          size="sm"
-          color="gradient" 
-          textColor="white"
-           /> */}
+      {entry.image ? (
+              <Image
+                src={entry.image}
+                alt={entry.created_by}
+                width={20}
+                height={20}
+                className="rounded-full"
+              />
+            ) : (
+            <Avatar 
+            text={entry.created_by} 
+            color="gradient" 
+            textColor="white" 
+            size="sm"
+          />
+            )}
         <p className="text-sm text-gray-500">{entry.created_by}</p>
         <span className=" text-gray-200 dark:text-gray-800">•</span>
         <p className="text-sm text-gray-400 dark:text-gray-600">

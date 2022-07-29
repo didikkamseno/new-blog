@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/dist/client/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
@@ -7,10 +7,11 @@ import cn from 'classnames';
 import useSound from 'use-sound';  
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
+import { Tooltip } from '@nextui-org/react';
 
-function NavItem({ href, text }) {
+function NavItem({ href, text, description }) {
   const router = useRouter();
-  const isActive = router.asPath === href;
+  const isActive = router.pathname.split('/')[1] === href.split('/')[1];
   const [playpageChange] = useSound("/media/page-change.mp3");
   const [playMenuon] = useSound("/media/switch-on.mp3");
   
@@ -27,7 +28,13 @@ function NavItem({ href, text }) {
           playpageChange()
         }}
       >
-        <span className="text-base capsize">{text}</span>
+       <Tooltip
+          content={description}
+          color="secondary"
+          placement="bottomStart"
+        >
+      <span className="text-base capsize">{text}</span>
+      </Tooltip>
       </a>
     </NextLink>
   );
@@ -82,11 +89,11 @@ export default function Container(props) {
           </a>
         <div className="ml-[-0.60rem]">
             <MobileMenu />
-            <NavItem href="/" text="Home" />
-            <NavItem href="/guestbook" text="Guestbook" />
-            <NavItem href="/dashboard" text="Dashboard" />
-            <NavItem href="/blog" text="Blog" />
-            <NavItem href="/snippets" text="Snippets" />
+            <NavItem href="/" text="Home" description="HomePage." />
+            <NavItem href="/guestbook" text="Guestbook" description="Let others know you were here!" />
+            <NavItem href="/dashboard" text="Dashboard" description="Stats at one place." />
+            <NavItem href="/blog" text="Blog" description="Read my blog articles." />
+            <NavItem href="/snippets" text="Snippets" description="Code snippets worth sharing." />
           </div>
           <button
             aria-label="Toggle Dark Mode"
