@@ -56,6 +56,17 @@ module.exports = {
             'h2,h3,h4': {
               'scroll-margin-top': spacing[32]
             },
+            code: {
+              paddingTop: '2px',
+              paddingBottom: '2px',
+              borderRadius: '0.25rem'
+            },
+            'code::before': {
+              content: 'none'
+            },
+            'code::after': {
+              content: 'none'
+            },
             thead: {
               borderBottomColor: theme('colors.gray.200')
             },
@@ -81,6 +92,17 @@ module.exports = {
             'h2,h3,h4': {
               color: theme('colors.gray.100'),
               'scroll-margin-top': spacing[32]
+            },
+            code: {
+              paddingTop: '2px',
+              paddingBottom: '2px',
+              borderRadius: '0.25rem'
+            },
+            'code::before': {
+              content: 'none'
+            },
+            'code::after': {
+              content: 'none'
             },
             hr: { borderColor: theme('colors.gray.700') },
             ol: {
