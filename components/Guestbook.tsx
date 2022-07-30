@@ -31,11 +31,12 @@ function GuestbookEntry({ entry, user }) {
                 className="rounded-full"
               />
             ) : (
-            <Avatar 
-            text={entry.created_by} 
-            color="gradient" 
-            textColor="white" 
-            size="sm"
+            <Image 
+            alt={entry.created_by} 
+            src="/static/images/defaultavatar.png" 
+            width={25}
+            height={25}
+            className="rounded-full"
           />
             )}
         <p className="text-sm text-gray-500">{entry.created_by}</p>

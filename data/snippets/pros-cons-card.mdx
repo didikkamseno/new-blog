@@ -4,7 +4,7 @@ description: 'Card components to show pros and cons in mdx post.'
 logo: 'mdx.png'
 ---
 
-We need Pros Card like this
+In this guide, we create Pros Card like this
 
 <ProsCard
   title="Title of Pros"
@@ -32,7 +32,7 @@ and Cons card like this.
 />
 ```
 
-We will create two components `components/ProsCard.tsx` and `components/ConsCard.tsx`, then pass these cards through`components/MDXComponents.tsx`.
+We will create two components `components/ProsCard.tsx` and `components/ConsCard.tsx`,then pass these through `components/MDXComponents.tsx`.
 
 ```tsx:components/MDXComponents.tsx
 import ProsCard from 'components/ProsCard';
@@ -47,7 +47,7 @@ const MDXComponents = {
 export default MDXComponents
 ```
 
-Now, finally the components
+Now, finally the code for the components
 
 ```tsx:components/ProsCard.tsx number
 export default function ProsCard({ title, pros }) {

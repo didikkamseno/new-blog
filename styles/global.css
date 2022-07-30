@@ -282,3 +282,19 @@ table {
     transform: rotate(0deg);
   }
 }
+
+.nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+.nav::-webkit-scrollbar-thumb {
+  @apply bg-neutral-500 rounded;
+}
+
+.navLink svg {
+  @apply h-6 w-6 sm:h-4 sm:w-4;
+}
+
+label {
+  @apply font-bold text-base;
+}
