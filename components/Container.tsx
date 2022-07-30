@@ -93,25 +93,59 @@ export default function Container(props) {
               Skip to content
             </a>
             {open ? (
-              <><XIcon
+              <><button
               onClick={() => {
                 setOpen(false)
-                playpageSwitch()
+                playMenuon()
               }}
-              className="fixed w-6 h-6 sm:hidden"
-              />
+              className="absolute h-5 w-5 sm:hidden">
+                <svg
+                  className="h-5 w-5 absolute text-gray-900 dark:text-gray-100"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                  shapeRendering="geometricPrecision"
+                >
+                  <path d="M18 6L6 18" />
+                  <path d="M6 6l12 12" />
+                </svg>
+              </button>
               </>
             ) : (
           <>
-          <button className='fixed w-6 h-6 sm:hidden'
+          <button className='absolute h-5 w-5 sm:hidden'
           onClick={() =>
               {
                 setOpen(true)
-                playpageSwitch()
+                playMenuon()
                 }}>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-              </svg>
+          <svg
+            className="h-5 w-5 absolute text-gray-900 dark:text-gray-100"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              d="M2.5 7.5H17.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M2.5 12.5H17.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
           </button>
           </>
             )}

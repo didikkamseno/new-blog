@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
+// import Pre from 'components/Pre'
 import ProsCard from 'components/cards/ProsCard';
 import ConsCard from 'components/cards/ConsCard';
 import Unsplash from 'components/metrics/Unsplash';
@@ -30,7 +30,7 @@ function RoundedImage(props) {
 
 function Callout(props) {
   return (
-    <div className="flex bg-gray-200 dark:bg-gray-800 rounded-lg p-4 my-8">
+    <div className="flex bg-zinc-200 dark:bg-zinc-800 rounded-lg p-4 my-8">
       <div className="flex items-center w-4 mr-4">{props.emoji}</div>
       <div className="w-full callout">{props.children}</div>
     </div>
