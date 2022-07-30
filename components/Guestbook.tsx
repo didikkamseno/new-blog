@@ -36,8 +36,7 @@ function GuestbookEntry({ entry, user }) {
             src="/static/images/defaultavatar.png" 
             width={25}
             height={25}
-            className="rounded-full"
-          />
+            className="rounded-full"/>
             )}
         <p className="text-sm text-gray-500">{entry.created_by}</p>
         <span className=" text-gray-200 dark:text-gray-800">•</span>

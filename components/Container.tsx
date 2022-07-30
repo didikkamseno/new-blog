@@ -94,16 +94,29 @@ export default function Container(props) {
             </a>
             {open ? (
               <><XIcon
-              onClick={() => setOpen(false)}
-              className="fixed w-6 h-6 sm:hidden mt-1"
+              onClick={() => {
+                setOpen(false)
+                playpageSwitch()
+              }}
+              className="fixed w-6 h-6 sm:hidden"
               />
               </>
             ) : (
-            <><MenuIcon className='w-6 h-6 sm:hidden mt-1' onClick={() => setOpen(true)} />
-            </>
+          <>
+          <button className='fixed w-6 h-6 sm:hidden'
+          onClick={() =>
+              {
+                setOpen(true)
+                playpageSwitch()
+                }}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+              </svg>
+          </button>
+          </>
             )}
             
-            <div className="ml-1">
+            <div className="ml-[-0.60rem]">
               <NavItem href="/" text="Home" description="HomePage." />
               <NavItem href="/guestbook" text="Guestbook" description="Let others know you were here!" />
               <NavItem href="/dashboard" text="Dashboard" description="Stats at one place." />
