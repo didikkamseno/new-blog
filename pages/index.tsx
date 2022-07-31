@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Link from 'next/link';
-import profilePic from '../public/avatar.jpg';
 import Container from '../components/Container';
 import BlogPostCard from '../components/cards/BlogPostCard';
 // import Subscribe from '../components/Subscribe';
@@ -36,7 +35,7 @@ export default function Home() {
                 alt="Kapil Chaudhary"
                 height={500}
                 width={500}
-                src={profilePic}
+                src="/avatar.jpg"
                 placeholder="blur"
                 blurDataURL="/static/images/SVG-placeholder.png"
                 sizes="30vw"

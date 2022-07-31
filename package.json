@@ -19,7 +19,7 @@
     "framer-motion": "^6.5.1",
     "googleapis": "48.0.0",
     "motion": "^10.8.1",
-    "next": "12.2.3",
+    "next": "12.1.7-canary.32",
     "next-auth": "^4.7.0",
     "next-contentlayer": "^0.2.5",
     "next-themes": "^0.2.0",
