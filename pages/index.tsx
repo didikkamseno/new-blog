@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Link from 'next/link';
-
+import profilePic from '../public/avatar.jpg';
 import Container from '../components/Container';
 import BlogPostCard from '../components/cards/BlogPostCard';
 // import Subscribe from '../components/Subscribe';
@@ -15,30 +15,35 @@ export default function Home() {
       <Container>
           <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
             <div className="flex flex-col-reverse sm:flex-row items-start">
-              <div className="flex flex-col pr-8">
-                <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-                  Kapil Chaudhary <span role='img' aria-label='waving-hand' className='wave animate-waving-hand'>👋</span>
-                </h1>
-                <h2 className="text-gray-700 dark:text-gray-200 mb-4 text-base">
-                  <span className="font-semibold">Junior research fellow (CSIR) at Gujarat university 🇮🇳.</span>
-                </h2>
-                 <TypedBios /> 
-                <p className="text-gray-600 dark:text-gray-400 mb-16">
-                </p>
+            <div className="flex flex-col pr-8">
+              <h1 className="mb-1 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
+                Kapil Chaudhary
+              </h1>
+              <h2 className="mb-4 text-gray-700 dark:text-gray-200">
+                Ph.D. student at {' '}
+                <span className="font-semibold">Gujarat University.</span>
+              </h2>
+              <h2 className="mb-4 text-gray-700 dark:text-gray-200">
+                Currently working as junior research fellow in fractional-order mathematical modelling at {' '}
+                <span className="font-semibold">CSIR, India.</span>
+              </h2>
+              <div className="mb-16 text-gray-600 dark:text-gray-300 hidden sm:flex">
+               <TypedBios />
               </div>
-              <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto rounded-full bg-gradient-to-r p-[2px] from-[#7928ca] to-[#ff0080]">
-                <div className="block bg-white dark:bg-dark rounded-full p-[2px]">
-                <Image
-                  alt="Kapil Chaudhary"
-                  height={176}
-                  width={176}
-                  src="/avatar.jpg"
-                  sizes="30vw"
-                  priority
-                  className="filter rounded-full grayscale-0 hover:grayscale-50"
-                />
-                </div>
-              </div>
+            </div>
+            <div className="relative mb-8 mr-auto w-[80px] sm:mb-0 sm:w-[176px]">
+              <Image
+                alt="Kapil Chaudhary"
+                height={500}
+                width={500}
+                src={profilePic}
+                placeholder="blur"
+                blurDataURL="/static/images/SVG-placeholder.png"
+                sizes="30vw"
+                priority
+                className="rounded-full"
+              />
+            </div>
             </div>
 
             <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">

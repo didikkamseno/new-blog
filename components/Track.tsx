@@ -1,11 +1,24 @@
 import Image from 'next/image'
+import { useState } from 'react'
+
+function cn(...classes: string[]) {
+    return classes.filter(Boolean).join(' ')
+  }
+
 export default function Track(track) {
+  const [isLoading, setLoading] = useState(true)
   return (
     <div className="group mt-8 flex w-full max-w-3xl transform flex-row items-baseline border-b border-gray-100 transition-all hover:scale-[1.03] dark:border-gray-800">
       <p className="text-sm font-bold text-gray-400 dark:text-gray-600">{track.ranking}</p>
       <div className="flex justify-self-auto">
       <div className="flex flex-col pl-3">
-      <Image className="rounded-lg" src={track.imageUrl} width={48} height={48} alt="" />
+      <Image src={track.imageUrl} width={48} height={48} alt="" className={cn(
+              'rounded-lg duration-700 ease-in-out group-hover:opacity-75',
+              isLoading
+                ? 'rounded-lg scale-110 blur-2xl grayscale'
+                : 'rounded-lg scale-100 blur-0 grayscale-0'
+            )}
+            onLoadingComplete={() => setLoading(false)} />
       </div>
       <div className="flex flex-col pl-3">
         <a
