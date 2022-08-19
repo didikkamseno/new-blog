@@ -9,6 +9,8 @@ import Footer from 'components/Footer';
 import Nav from 'components/menu/Nav';
 // import MobileMenu from 'components/MobileMenu';
 import { Tooltip } from '@nextui-org/react';
+import { useKBar } from 'kbar';
+import { Command } from 'react-feather';
 import { MenuIcon } from '@heroicons/react/outline';
 import { XIcon } from "@heroicons/react/outline";
 
@@ -49,6 +51,7 @@ export default function Container(props) {
   const [playpageSwitch] = useSound("/media/page-switch.mp3");
   const [playMenuon] = useSound("/media/switch-on.mp3");
   const [open, setOpen] = useState(false);
+  const { query } = useKBar()
 
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
@@ -69,15 +72,15 @@ export default function Container(props) {
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://leerob.io${router.asPath}`} />
-        <link rel="canonical" href={`https://leerob.io${router.asPath}`} />
+        <meta property="og:url" content={`https://heykapil.in${router.asPath}`} />
+        <link rel="canonical" href={`https://heykapil.in${router.asPath}`} />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Lee Robinson" />
+        <meta property="og:site_name" content="Kapil Chaudhary" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@leeerob" />
+        <meta name="twitter:site" content="@kapiljch" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
@@ -93,7 +96,9 @@ export default function Container(props) {
               Skip to content
             </a>
             {open ? (
-              <><button
+              <>
+              
+              <button
               onClick={() => {
                 setOpen(false)
                 playMenuon()
@@ -157,7 +162,17 @@ export default function Container(props) {
               <NavItem href="/blog" text="Blog" description="Read my blog articles." />
               <NavItem href="/snippets" text="Snippets" description="Code snippets worth sharing." />
             </div> 
+            <div role="group" className='inline-flex gap-3'>
             <button
+              aria-label='Toggle Command Pallete'
+              type='button'
+              className='w-9 h-9 bg-gray-200 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300'
+              onClick={
+                query.toggle
+              }>
+                <Command width={20} height={20} />
+              </button>
+              <button
               aria-label="Toggle Dark Mode"
               type="button"
               className="w-9 h-9 bg-gray-200 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300"
@@ -194,6 +209,7 @@ export default function Container(props) {
                 </svg>
               )}
             </button>
+            </div>
           </nav>
         </div>
         <main

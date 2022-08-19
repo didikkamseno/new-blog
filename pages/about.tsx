@@ -16,28 +16,28 @@ export default function About() {
           <h2>Links</h2>
           <ul>
             <li>
-              Twitter: <a href="https://twitter.com/leeerob">@leeerob</a>
+              Twitter: <a href="https://twitter.com/kapiljch">@kapiljch</a>
             </li>
             <li>
-              GitHub: <a href="https://github.com/leerob">@leerob</a>
+              GitHub: <a href="https://github.com/heykapil">@heykapil</a>
             </li>
             <li>
               Website:{' '}
-              <Link href="https://leerob.io">
-                <a>https://leerob.io</a>
+              <Link href="https://heykapil.in">
+                <a>https://heykapil.in</a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               LinkedIn:{' '}
               <a href="https://www.linkedin.com/in/leeerob/">
                 https://www.linkedin.com/in/leeerob
               </a>
-            </li>
+            </li> */}
           </ul>
           <h2>Bio</h2>
-          <h3>Job Title</h3>
-          <p>Lee Robinson, VP of Developer Experience at Vercel</p>
-          <h3>Long, 3rd Person</h3>
+          <h3>Current Position</h3>
+          <p>Kapil Chaudhary, Ph.D. student at Gujarat University.</p>
+          {/* <h3>Long, 3rd Person</h3>
           <p>
             Lee Robinson is the VP of Developer Experience at{' '}
             <a href="http://vercel.com/">Vercel</a>, where he helps developers
@@ -66,11 +66,10 @@ export default function About() {
             Hey, I'm Lee. I'm the VP of Developer Experience at{' '}
             <a href="https://vercel.com/">Vercel</a>, where my team helps
             developers build a faster web.
-          </p>
+          </p> */}
           <h3>Education</h3>
           <p>
-            Lee Robinson graduated from Iowa State University with a B.S. in
-            Computer Engineering.
+            Kapil Chaudhary graduated from University of Delhi with Honors in Mathematics.
           </p>
           <h2>Headshots</h2>
           {/* <div className="flex space-x-8">

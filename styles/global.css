@@ -303,3 +303,7 @@ table {
 label {
   @apply font-bold text-base;
 }
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}

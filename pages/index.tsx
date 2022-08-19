@@ -6,6 +6,7 @@ import BlogPostCard from '../components/cards/BlogPostCard';
 // import Subscribe from '../components/Subscribe';
 // import VideoCard from '../components/VideoCard';
 import TypedBios from 'components/TypedBios';
+// import avatar from '.../public/avatar.jpg';
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
      <Suspense fallback={null}> 
       <Container>
           <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
-            <div className="flex flex-col-reverse sm:flex-row items-start">
+            <div className="flex flex-col-reverse sm:flex-row items-start relative">
             <div className="flex flex-col pr-8">
               <h1 className="mb-1 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
                 Kapil Chaudhary
@@ -30,21 +31,16 @@ export default function Home() {
                <TypedBios />
               </div>
             </div>
-            <div className="relative mb-8 mr-auto w-[80px] sm:mb-0 sm:w-[176px]">
+            <div className="block h-40 w-40 rounded-[50%] blur-[32px] [transform:translate(-50%,-50%)] [background-image:linear-gradient(-45deg,rgb(78,70,229)50%,rgb(2,133,199)50%)] md:h-52 md:w-52 md:blur-[56px]" />
               <Image
-                alt="Kapil Chaudhary"
-                height={500}
-                width={500}
-                src="/avatar.jpg"
-                placeholder="blur"
-                blurDataURL="/static/images/SVG-placeholder.png"
-                sizes="30vw"
                 priority
-                className="rounded-full"
+                src='/avatar.jpg'
+                alt="Kapil Chaudhary"
+                width={176}
+                height={176}
+                className="rounded-full md:h-20 md:w-20"
               />
             </div>
-            </div>
-
             <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
               Featured Posts
             </h3>
