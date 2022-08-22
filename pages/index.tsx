@@ -13,131 +13,50 @@ export default function Home() {
     <>
      <Suspense fallback={null}> 
       <Container>
-          <div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
-            <div className="flex flex-col-reverse sm:flex-row items-start relative">
-            <div className="flex flex-col pr-8">
-              <h1 className="mb-1 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
-                Kapil Chaudhary
-              </h1>
-              <h2 className="mb-4 text-gray-700 dark:text-gray-200">
-                Ph.D. student at {' '}
-                <span className="font-semibold">Gujarat University.</span>
-              </h2>
-              <h2 className="mb-4 text-gray-700 dark:text-gray-200">
-                Currently working as junior research fellow in fractional-order mathematical modelling at {' '}
-                <span className="font-semibold">CSIR, India.</span>
-              </h2>
-              <div className="mb-16 text-gray-600 dark:text-gray-300 hidden sm:flex">
-               <TypedBios />
-              </div>
-            </div>
-            <div className="block h-40 w-40 rounded-[50%] blur-[32px] [transform:translate(-50%,-50%)] [background-image:linear-gradient(-45deg,rgb(78,70,229)50%,rgb(2,133,199)50%)] md:h-52 md:w-52 md:blur-[56px]" />
-              <Image
-                priority
-                src='/avatar.jpg'
-                alt="Kapil Chaudhary"
-                width={176}
-                height={176}
-                className="rounded-full md:h-20 md:w-20"
-              />
-            </div>
-            <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
-              Featured Posts
-            </h3>
-            <div className="flex gap-6 flex-col md:flex-row">
-              <BlogPostCard
-                title="CSIR NEWFMS Portal Guide"
-                slug="csir-newfms-guide-1"
-                gradient="from-[#D8B4FE] to-[#818CF8]"
-              />
-              {/* <BlogPostCard
-                title="Rust Is The Future of JavaScript Infrastructure"
-                slug=""
-                gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
-              /> */}
-              <BlogPostCard
-                title="Practice Questions"
-                slug="practice-questions-matrix-algebra-mat411pr"
-                gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
-              /> 
-            </div>
-            {/* <Link href="/blog">
-              <a className="flex mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
-                Read all posts
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="h-6 w-6 ml-1"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                  />
-                </svg>
-              </a>
-            </Link>
+      <div className="flex flex-col items-center max-w-2xl mx-auto border-gray-200 dark:border-gray-700 pb-44 pt-6 md:flex-row-reverse md:gap-6">
+      <div className="relative mx-auto h-52 w-52 md:h-64 md:w-64 md:flex-[1]">
+        <div className="absolute left-1/2 top-1/2 h-40 w-40 rounded-[50%] blur-[32px] [transform:translate(-50%,-50%)] [background-image:linear-gradient(-45deg,rgb(78,70,229)50%,rgb(2,133,199)50%)] md:h-52 md:w-52 md:blur-[56px]" />
+        <Image
+          priority
+          src="/avatar.jpg"
+          alt="KC"
+          width={150}
+          height={150}
+          className="absolute left-12 top-12 h-auto w-auto rounded-full"
+        />
+      </div>
 
-            {/* <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-16 text-black dark:text-white">
-              Learn React & Next.js
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Build and deploy a modern SaaS application using the most popular
-              open-source software. This course is 12 hours long and is completely
-              live streamed.
-            </p>
-            <VideoCard
-              index="01"
-              href="https://www.youtube.com/watch?v=MxR5I5_hOKk&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"
-              length="1:02:45"
-              title="Introduction to React 2025"
-            />
-            <VideoCard
-              index="02"
-              href="https://www.youtube.com/watch?v=AGl52moyISU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=3"
-              length="54:22"
-              title="Firestore, Chakra UI, Absolute Imports"
-            />
-            <VideoCard
-              index="03"
-              href="https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4"
-              length="1:08:30"
-              title="Designing & Building the Dashboard"
-            />
-            <VideoCard
-              index="04"
-              href="https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5"
-              length="1:13:45"
-              title="Firebase Admin with Next.js + SWR"
-            />
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.youtube.com/playlist?list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1"
-              className="flex mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
-            >
-              Watch all videos
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="h-6 w-6 ml-1"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-                />
-              </svg>
-            </a> 
-            <span className="h-16" />
-             <Subscribe /> */}
-          </div>
+      <div className="flex flex-[2] flex-col items-left gap-3">
+        <h1 className="bg-gradient-to-r from-sky-600 via-sky-500 to-sky-500 bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-700 dark:via-sky-600 dark:to-sky-500 md:text-4xl text-left">
+          Kapil Chaudhary
+        </h1>
+        <p className="text-zinc-700 dark:text-zinc-400 text-left">Ph.D. student at Gujarat University</p>
+
+        <hr className="border border-yellow-500" />
+
+        <p className="text-sm leading-7 text-zinc-700 dark:text-zinc-400">
+          I&#39;m <b>Kapil</b>, a junior research fellow funded by <b>CSIR</b> working on <b>Fractional-order dynamical system</b> who loves <b>Front end development</b> and <b>NextJS</b>.
+        </p>
+        <div className="text-sm text-zinc-700 dark:text-zinc-400 flex">
+               <TypedBios />
+        </div>
+        <div className="mt-8 text-slate-600 dark:text-slate-400 hidden sm:block">
+                <span className="text-sm">Press</span>{' '}
+                <span className="rounded-md bg-gray-300 p-1 text-sm text-gray-900 dark:bg-gray-400">
+                  ⌘
+                </span>{' '}
+                <span className="text-sm">/ </span>
+                <span className="rounded-md bg-gray-300 p-1 text-sm text-gray-900 dark:bg-gray-400">
+                  ctrl
+                </span>{' '}
+                <span className="text-sm">+ </span>
+                <span className="rounded-md bg-gray-300 p-1 text-sm text-gray-900 dark:bg-gray-400">
+                  K
+                </span>{' '}
+                <span className="text-sm">to easily navigate.</span>
+        </div>
+        </div>
+        </div>
         </Container>
         </Suspense>
       </>
