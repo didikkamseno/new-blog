@@ -9,10 +9,10 @@ import Footer from 'components/Footer';
 import Nav from 'components/menu/Nav';
 // import MobileMenu from 'components/MobileMenu';
 import { Tooltip } from '@nextui-org/react';
-import { useKBar } from 'kbar';
 import { Command } from 'react-feather';
-import { MenuIcon } from '@heroicons/react/outline';
-import { XIcon } from "@heroicons/react/outline";
+import { useKBar } from 'kbar';
+// import { MenuIcon } from '@heroicons/react/outline';
+// import { XIcon } from "@heroicons/react/outline";
 
 function NavItem({ href, text, description }) {
   const router = useRouter();
@@ -25,9 +25,9 @@ function NavItem({ href, text, description }) {
       <a
         className={cn(
           isActive
-            ? 'font-semibold text-neutral-800 dark:text-neutral-800 bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to'
+            ? 'font-semibold text-neutral-800 bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to dark:bg-gradient-to-tr dark:from-indigo-500 dark:via-purple-500 dark:to-fuchsia-500'
             : 'font-semibold text-gray-800 dark:text-gray-400',
-          'hidden font-semibold md:inline-block px-3 py-2 rounded-lg  text-gray-800 dark:text-gray-200 hover:dark:text-gray-700 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to'
+          'hidden font-semibold md:inline-block px-3 py-2 rounded-lg  text-gray-800 dark:text-gray-200 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to hover:dark:bg-gradient-to-tr hover:dark:from-cyan-500 hover:dark:via-emerald-500 hover:dark:to-green-500'
         )}
         onClick={() => {
           playpageChange()
@@ -166,9 +166,11 @@ export default function Container(props) {
               aria-label='Toggle Command Pallete'
               type='button'
               className='w-9 h-9 bg-gray-200 rounded-lg dark:bg-gray-600 flex items-center justify-center  hover:ring-2 ring-gray-300'
-              onClick={
-                query.toggle
-              }>
+              onClick={() => {
+                query.toggle()
+                playMenuon()
+              }}
+              >
                 <Command width={20} height={20} />
               </button>
               <button
