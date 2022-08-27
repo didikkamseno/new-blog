@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import type { ActionImpl, ActionId } from 'kbar'
 import { useRouter } from 'next/router'
-import { pick } from 'contentlayer/client'
 import {
   KBarAnimator,
   KBarPortal,
@@ -28,10 +27,7 @@ const animatorStyle = {
   },
 };
 
-export interface CommandBarProps {
-  children?: React.ReactNode
-}
-export function CommandBar( { children }: CommandBarProps) {
+export function CommandBar( { children, blogPost }) {
   const router = useRouter()
   const { setTheme, resolvedTheme } = useTheme();
   // const actions = useMemo(() => {   
@@ -179,6 +175,7 @@ export function CommandBar( { children }: CommandBarProps) {
 }
 
 const RenderResults = () => {
+  const { setTheme, resolvedTheme } = useTheme();
   const { results, rootActionId } = useMatches();
 
   return (
@@ -220,7 +217,7 @@ const ResultItem = React.forwardRef(({action, active, currentRootActionId} :
       // but rather just "Dark"
       return action.ancestors.slice(index + 1);
     }, [action.ancestors, currentRootActionId]);
-
+   const { setTheme, resolvedTheme } = useTheme();
     return (
       <div
         ref={ref}

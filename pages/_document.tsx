@@ -66,7 +66,7 @@ class MyDocument extends Document {
         />
 
         </Head>
-        <body className="bg-white dark:bg-dark dark:text-white text-black">
+        <body className="bg-white text-black dark:bg-black dark:text-white">
           <Main />
           <NextScript />
         </body> 
