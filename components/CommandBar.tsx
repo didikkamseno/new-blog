@@ -27,7 +27,7 @@ const animatorStyle = {
   },
 };
 
-export function CommandBar( { children, blogPost }) {
+export function CommandBar( { children }) {
   const router = useRouter()
   const { setTheme, resolvedTheme } = useTheme();
   // const actions = useMemo(() => {   
