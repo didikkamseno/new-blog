@@ -6,6 +6,7 @@ import BlogPostCard from '../components/cards/BlogPostCard';
 // import Subscribe from '../components/Subscribe';
 // import VideoCard from '../components/VideoCard';
 import TypedBios from 'components/TypedBios';
+// import ADiv from 'components/animated/adiv';
 
 export default function Home() {
   return (
