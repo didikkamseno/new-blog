@@ -146,7 +146,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         id: 'PostsAction',
         name: 'Search Posts...',
         keywords: 'Contentlayer Blog Post List',
-        shortcut: ['s','p'],
+        shortcut: [],
         icon: <FileText width={16} height={16} />,
       })
       id++
@@ -169,7 +169,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         id: 'SnippetAction',
         name: 'Search Snippets...',
         keywords: 'Contentlayer Snippets List',
-        shortcut: ['s','s'],
+        shortcut: [],
         icon: <Code width={16} height={16} />,
       })
       id++
