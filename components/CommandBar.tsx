@@ -146,7 +146,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         id: 'PostsAction',
         name: 'Search Posts...',
         keywords: 'Contentlayer Blog Post List',
-        section: 'Blog',
         shortcut: ['s','p'],
         icon: <FileText width={16} height={16} />,
       })
@@ -170,7 +169,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         id: 'SnippetAction',
         name: 'Search Snippets...',
         keywords: 'Contentlayer Snippets List',
-        section: 'Snippets',
         shortcut: ['s','s'],
         icon: <Code width={16} height={16} />,
       })
@@ -180,7 +178,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
           id: ('snippet-' + id).toString(),
           name: snippet.title ,
           keywords: snippet?.description || '',
-          section: 'Snippets',
           parent:  'SnippetAction',
           icon: <Code width={16} height={16} />,
           perform: () => router.push('/snippets/' + snippet?.slug),
