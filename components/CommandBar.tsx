@@ -45,7 +45,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         name: 'Home',
         shortcut: ['h'],
         keywords: 'back',
-        section: 'Navigation',
         icon: <Home width={16} height={16} />,
         perform: () => router.push('/'),
       },
@@ -61,7 +60,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['g', 'b'],
         icon: <BookOpen width={16} height={16} />,
         perform: () => router.push('/guestbook/'),
-        section: 'Navigation',
       },
       {
         id: 'aboutAction',
@@ -69,7 +67,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['a'],
         icon: <User width={16} height={16} />,
         perform: () => router.push('/about/'),
-        section: 'Navigation',
+        
       },
       {
         id: 'usesAction',
@@ -77,7 +75,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['u'],
         icon: <Tool width={16} height={16} />,
         perform: () => router.push('/uses'),
-        section: 'Navigation',
+        
       },
       {
         id: 'generalAction',
