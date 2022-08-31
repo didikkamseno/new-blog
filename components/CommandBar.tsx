@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react'
+import React from 'react'
+import { FC, ReactNode, useMemo } from 'react'
 import type { ActionImpl, ActionId } from 'kbar'
 import { useRouter } from 'next/router'
 import {
@@ -11,10 +12,12 @@ import {
   Action,
   useMatches
 } from 'kbar'
-import { FileText, Home, Box, User, Tool, Mail, Clipboard, AtSign, Twitter, GitHub, Linkedin , BookOpen, Settings} from 'react-feather';
+import { FileText, Home, Box, User, Tool, Mail, Clipboard, AtSign, Twitter, GitHub, Code , Linkedin, BookOpen, Search, Settings } from 'react-feather';
 import { useTheme } from 'next-themes';
 import clsx from 'classnames';
 import { allBlogs, allSnippets } from 'contentlayer/generated';
+import { parseISO, format } from 'date-fns';
+import type { Blog, Snippet } from 'contentlayer/generated';
 const animatorStyle = {
   maxWidth: '600px',
   width: '100%',
@@ -27,128 +30,168 @@ const animatorStyle = {
   },
 };
 
-export function CommandBar( { children }) {
+export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
   const router = useRouter()
-  const { setTheme, resolvedTheme } = useTheme();
-  // const actions = useMemo(() => {   
-  // let actions: Action[] = [
-    const actions: Action[] = [
-    //   {
-    //   id: 'blog',
-    //   name:  'Blog Posts',
-    //   shortcut: [],
-    // },
-    {
-      id: 'homeAction',
-      name: 'Home',
-      shortcut: ['h'],
-      keywords: 'back',
-      section: 'Navigation',
-      icon: <Home width={16} height={16} />,
-      perform: () => router.push('/'),
-   },
-    {
-      id: 'blogAction',
-      name: 'Blog',
-      shortcut: ['b'],
-      icon: <FileText width={16} height={16} />,
-      perform: () => router.push('/blog/'),
-      section: 'Navigation',
-    },
-    {
-      id: 'guestbookAction',
-      name: 'Guestbook',
-      shortcut: ['g', 'b'],
-      icon: <BookOpen width={16} height={16} />,
-      perform: () => router.push('/guestbook/'),
-      section: 'Navigation',
-    },
-    {
-      id: 'aboutAction',
-      name: 'About me',
-      shortcut: ['a'],
-      icon: <User width={16} height={16} />,
-      perform: () => router.push('/about/'),
-      section: 'Navigation',
-    },
-    {
-      id: 'usesAction',
-      name: 'Uses',
-      shortcut: ['u'],
-      icon: <Tool width={16} height={16} />,
-      perform: () => router.push('/uses'),
-      section: 'Navigation',
-    },
-    {
-      id: 'generalAction',
-      name: 'General',
-      shortcut: [],
-      keywords: 'copy-url change-theme',
-      icon: <Settings width={16} height={16} />,
-      // parent: 'generalAction',
-      // perform: () => navigator.clipboard.writeText(window.location.href),
-    },
-    {
-      id: 'copyAction',
-      name: 'Copy URL',
-      shortcut: ['u'],
-      keywords: 'copy-url',
-      parent: 'generalAction',
-      icon: <Clipboard width={16} height={16} />,
-      perform: () => navigator.clipboard.writeText(window.location.href),
-    },
-    {
-      id: 'changeThemeAction',
-      name: 'Change Theme',
-      keywords: 'Dark',
-      shortcut: [],
-      parent: 'generalAction',
-      perform: () =>  setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
-    },
-    {
-      id: 'socialAction',
-      name: 'Social Links',
-      shortcut: [],
-      icon: <AtSign width={16} height={16} />,
-      keywords: 'email social twitter github instagram',
-   },
-    {
-      id: 'emailAction',
-      name: 'Email',
-      shortcut: ['s', 'e'],
-      keywords: 'send-email',
-      parent: 'socialAction',
-      perform: () => (window.open('mailto:contact@heykapil.in', '_blank')),
-      icon: <Mail width={16} height={16} />,
-    },
-    {
-      id: 'githubAction',
-      name: 'Github',
-      shortcut: ['s', 'g'],
-      keywords: 'go-github',
-      parent: 'socialAction',
-      perform: () => (window.open('https://github.com/heykapil', '_blank')),
-      icon: <GitHub width={16} height={16} />,
-    },
-    {
-      id: 'twitterAction',
-      name: 'Twitter',
-      shortcut: ['s', 't'],
-      keywords: 'go-twitter',
-      parent: 'socialAction',
-      perform: () => (window.open('https://twitter.com/kapiljch', '_blank')),
-      icon: <Twitter width={16} height={16} />,
-    },
-  ]
-  // const blogAction =  allBlogs.map((post) =>
-  // ({  
-  //   id: post.slug , 
-  //   name: post.title , 
-  //   shortcut: [] ,
-  //   parent: 'blog',
-  //   perform: () => router.push(`/blog/$post.slug`) , 
-  // })
-  // )
+  const actions = useMemo(() => {
+    let actions: Action[] = [
+      // const actions: Action[] = [
+      //   {
+      //   id: 'blog',
+      //   name:  'Blog Posts',
+      //   shortcut: [],
+      // },
+      {
+        id: 'homeAction',
+        name: 'Home',
+        shortcut: ['h'],
+        keywords: 'back',
+        section: 'Navigation',
+        icon: <Home width={16} height={16} />,
+        perform: () => router.push('/'),
+      },
+      // {
+      //   id: 'blogAction',
+      //   name: 'Blog',
+      //           perform: () => router.push('/blog/'),
+      //   section: 'Navigation',
+      // },
+      {
+        id: 'guestbookAction',
+        name: 'Guestbook',
+        shortcut: ['g', 'b'],
+        icon: <BookOpen width={16} height={16} />,
+        perform: () => router.push('/guestbook/'),
+        section: 'Navigation',
+      },
+      {
+        id: 'aboutAction',
+        name: 'About me',
+        shortcut: ['a'],
+        icon: <User width={16} height={16} />,
+        perform: () => router.push('/about/'),
+        section: 'Navigation',
+      },
+      {
+        id: 'usesAction',
+        name: 'Uses',
+        shortcut: ['u'],
+        icon: <Tool width={16} height={16} />,
+        perform: () => router.push('/uses'),
+        section: 'Navigation',
+      },
+      {
+        id: 'generalAction',
+        name: 'General',
+        shortcut: [],
+        keywords: 'copy-url change-theme',
+        icon: <Settings width={16} height={16} />,
+        // parent: 'generalAction',
+        // perform: () => navigator.clipboard.writeText(window.location.href),
+      },
+      {
+        id: 'copyAction',
+        name: 'Copy URL',
+        shortcut: ['u'],
+        keywords: 'copy-url',
+        parent: 'generalAction',
+        icon: <Clipboard width={16} height={16} />,
+        perform: () => navigator.clipboard.writeText(window.location.href),
+      },
+      // {
+      //   id: 'changeThemeAction',
+      //   name: 'Change Theme',
+      //   keywords: 'Dark',
+      //   shortcut: [],
+      //   parent: 'generalAction',
+      //   perform: () =>  setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
+      // },
+      {
+        id: 'socialAction',
+        name: 'Social Links',
+        shortcut: [],
+        icon: <AtSign width={16} height={16} />,
+        keywords: 'email social twitter github instagram',
+      },
+      {
+        id: 'emailAction',
+        name: 'Email',
+        shortcut: ['e'],
+        keywords: 'send-email',
+        parent: 'socialAction',
+        perform: () => (window.open('mailto:contact@heykapil.in', '_blank')),
+        icon: <Mail width={16} height={16} />,
+      },
+      {
+        id: 'githubAction',
+        name: 'Github',
+        shortcut: ['g'],
+        keywords: 'go-github',
+        parent: 'socialAction',
+        perform: () => (window.open('https://github.com/heykapil', '_blank')),
+        icon: <GitHub width={16} height={16} />,
+      },
+      {
+        id: 'twitterAction',
+        name: 'Twitter',
+        shortcut: ['t'],
+        keywords: 'go-twitter',
+        parent: 'socialAction',
+        perform: () => (window.open('https://twitter.com/kapiljch', '_blank')),
+        icon: <Twitter width={16} height={16} />,
+      },
+    ]
+    let id = 1
+    const mapPosts = (posts: Blog[]) => {
+      actions.push({
+        id: 'PostsAction',
+        name: 'Search Posts...',
+        keywords: 'Contentlayer Blog Post List',
+        section: 'Blog',
+        shortcut: ['s','p'],
+        icon: <FileText width={16} height={16} />,
+      })
+      id++
+      for (const post of posts) {
+        actions.push({
+          id: ('blog-' + id).toString(),
+          name: post.title ,
+          keywords: post?.summary || '',
+          // shortcut: ['b'],
+          icon: <FileText width={16} height={16} />,
+          parent: 'PostsAction',
+          subtitle:  format(parseISO(post.publishedAt), 'MMMM dd, yyyy')|| '',
+          perform: () => router.push('/blog/' + post?.slug),
+        })
+        id++
+      }
+    }
+    const mapSnippets = (snippets: Snippet[]) => {
+      actions.push({
+        id: 'SnippetAction',
+        name: 'Search Snippets...',
+        keywords: 'Contentlayer Snippets List',
+        section: 'Snippets',
+        shortcut: ['s','s'],
+        icon: <Code width={16} height={16} />,
+      })
+      id++
+      for (const snippet of snippets) {
+        actions.push({
+          id: ('snippet-' + id).toString(),
+          name: snippet.title ,
+          keywords: snippet?.description || '',
+          section: 'Snippets',
+          parent:  'SnippetAction',
+          icon: <Code width={16} height={16} />,
+          perform: () => router.push('/snippets/' + snippet?.slug),
+        })
+        id++
+      }
+    }
+    mapPosts(allBlogs)
+    mapSnippets(allSnippets)
+    return actions
+  }, [router])
   return (
     <KBarProvider
       actions={actions}
@@ -159,12 +202,15 @@ export function CommandBar( { children }) {
       <KBarPortal>
         <KBarPositioner className="fixed inset-0 z-50 animate-overlayShow bg-black bg-opacity-60 backdrop-blur-sm backdrop-filter">
           <KBarAnimator className="w-full max-w-2xl rounded-lg overflow-hidden bg-gray-50 dark:bg-dark invisible-scrollbar" style={animatorStyle}>
-            <KBarSearch
-              className="w-full text-gray-700 box-border outline-none border-none px-7 py-4 bg-gray-100 dark:bg-neutral-800 dark:text-neutral-200"
-              placeholder="Type a command or search ..."
-            />
+            <div className="flex items-center space-x-4 p-4">
+                <span className="block">
+                  <Search width={20} height={20} />
+                </span>
+                <KBarSearch className="h-8 w-full bg-transparent text-slate-600 placeholder-slate-400 focus:outline-none dark:text-slate-200 dark:placeholder-slate-500" />
+                <span className='bg-gray-200 dark:bg-gray-800 dark:text-white text-black px-3 py-1 rounded-lg'>esc</span>
+            </div> 
             <div className="px-3 py-4 border-t border-gray-200">
-             <RenderResults />
+              <RenderResults />
             </div>
           </KBarAnimator>
         </KBarPositioner>
@@ -175,7 +221,7 @@ export function CommandBar( { children }) {
 }
 
 const RenderResults = () => {
-  const { setTheme, resolvedTheme } = useTheme();
+  // const { setTheme, resolvedTheme } = useTheme();
   const { results, rootActionId } = useMatches();
 
   return (
@@ -198,89 +244,89 @@ const RenderResults = () => {
   );
 }
 
-const ResultItem = React.forwardRef(({action, active, currentRootActionId} :
-   {
-      action: ActionImpl;
-      active: boolean;
-      currentRootActionId: ActionId;
-    },
-    ref: React.Ref<HTMLDivElement>
-  ) => {
-    const ancestors = React.useMemo(() => {
-      if (!currentRootActionId) return action.ancestors;
-      const index = action.ancestors.findIndex(
-        (ancestor) => ancestor.id === currentRootActionId
-      );
-      // +1 removes the currentRootAction; e.g.
-      // if we are on the "Set theme" parent action,
-      // the UI should not display "Set theme… > Dark"
-      // but rather just "Dark"
-      return action.ancestors.slice(index + 1);
-    }, [action.ancestors, currentRootActionId]);
-   const { setTheme, resolvedTheme } = useTheme();
-    return (
-      <div
-        ref={ref}
-        className={clsx(
-          'px-4 py-2 flex font-medium items-center justify-between cursor-pointer rounded transition-all duration-200 ease-in-out dark:bg-dark', {
-            'bg-gradient-to-r from-rose-100 via-pink-200 to-orange-100 dark:bg-gradient-to-r dark:from-purple-500 dark:via-fuchsia-300 dark:to-rose-100': active
-          }
-        )}
-      >
-        <div className="flex items-center space-x-2">
-          {action.icon && action.icon}
-          <div className="flex flex-col">
-            <div>
-              {ancestors.length > 0 &&
-                ancestors.map((ancestor) => (
-                  <React.Fragment key={ancestor.id}>
-                    <span
-                      style={{
-                        opacity: 0.5,
-                        marginRight: 8,
-                      }}
-                    >
-                      {ancestor.name}
-                    </span>
-                    <span
-                      style={{
-                        marginRight: 8,
-                      }}
-                    >
-                      &rsaquo;
-                    </span>
-                  </React.Fragment>
-                ))}
-              <span>{action.name}</span>
-            </div>
-            {action.subtitle && (
-              <span style={{ fontSize: 12 }}>{action.subtitle}</span>
-            )}
+const ResultItem = React.forwardRef(({ action, active, currentRootActionId }:
+  {
+    action: ActionImpl;
+    active: boolean;
+    currentRootActionId: ActionId;
+  },
+  ref: React.Ref<HTMLDivElement>
+) => {
+  const ancestors = React.useMemo(() => {
+    if (!currentRootActionId) return action.ancestors;
+    const index = action.ancestors.findIndex(
+      (ancestor) => ancestor.id === currentRootActionId
+    );
+    // +1 removes the currentRootAction; e.g.
+    // if we are on the "Set theme" parent action,
+    // the UI should not display "Set theme… > Dark"
+    // but rather just "Dark"
+    return action.ancestors.slice(index + 1);
+  }, [action.ancestors, currentRootActionId]);
+  const { setTheme, resolvedTheme } = useTheme();
+  return (
+    <div
+      ref={ref}
+      className={clsx(
+        'px-4 py-2 flex font-medium items-center justify-between cursor-pointer rounded transition-all duration-200 ease-in-out dark:bg-dark', {
+        'bg-gradient-to-r from-rose-100 via-pink-200 to-orange-100 dark:bg-gradient-to-r dark:from-purple-500 dark:via-fuchsia-500 dark:to-pink-500': active
+      }
+      )}
+    >
+      <div className="flex items-center space-x-2">
+        {action.icon && action.icon}
+        <div className="flex flex-col">
+          <div>
+            {ancestors.length > 0 &&
+              ancestors.map((ancestor) => (
+                <React.Fragment key={ancestor.id}>
+                  <span
+                    style={{
+                      opacity: 0.5,
+                      marginRight: 8,
+                    }}
+                  >
+                    {ancestor.name}
+                  </span>
+                  <span
+                    style={{
+                      marginRight: 8,
+                    }}
+                  >
+                    &rsaquo;
+                  </span>
+                </React.Fragment>
+              ))}
+            <span>{action.name}</span>
           </div>
+          {action.subtitle && (
+            <span style={{ fontSize: 12 }}>{action.subtitle}</span>
+          )}
         </div>
-        {action.shortcut?.length ? (
-          <div
-            aria-hidden
-            style={{ display: "grid", gridAutoFlow: "column", gap: "4px" }}
-          >
-            {action.shortcut.map((sc) => (
-              <kbd
-                key={sc}
-                className='bg-gray-400 dark:bg-gray-600 dark:text-white text-black'
-                style={{
-                  padding: "4px 6px",
-                  borderRadius: "4px",
-                  fontSize: 14,
-                }}
-              >
-                {sc}
-              </kbd>
-            ))}
-          </div>
-        ) : null}
       </div>
-    )
-  }
+      {action.shortcut?.length ? (
+        <div
+          aria-hidden
+          style={{ display: "grid", gridAutoFlow: "column", gap: "4px" }}
+        >
+          {action.shortcut.map((sc) => (
+            <kbd
+              key={sc}
+              className='bg-gray-200 dark:bg-gray-800 dark:text-white text-black'
+              style={{
+                padding: "4px 6px",
+                borderRadius: "4px",
+                fontSize: 14,
+              }}
+            >
+              {sc}
+            </kbd>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  )
+}
 )
 ResultItem.displayName = 'ResultItem'
 
