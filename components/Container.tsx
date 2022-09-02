@@ -25,9 +25,9 @@ function NavItem({ href, text, description }) {
       <a
         className={cn(
           isActive
-            ? 'font-semibold text-neutral-800 bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to dark:bg-gradient-to-tr dark:from-indigo-500 dark:via-purple-500 dark:to-fuchsia-500'
+            ? 'font-semibold text-neutral-800 bg-gradient-to-br from-header-active-from via-header-active-via to-header-active-to dark:bg-gradient-to-bl dark:from-rose-300 dark:via-pink-500 dark:to-orange-600'
             : 'font-semibold text-gray-800 dark:text-gray-400',
-          'hidden font-semibold md:inline-block px-3 py-2 rounded-lg  text-gray-800 dark:text-gray-200 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to hover:dark:bg-gradient-to-tr hover:dark:from-cyan-500 hover:dark:via-emerald-500 hover:dark:to-green-500'
+          'hidden font-semibold md:inline-block px-3 py-2 rounded-lg  text-gray-800 dark:text-gray-200 hover:bg-gradient-to-tr hover:from-header-hover-from hover:via-header-hover-via hover:to-header-hover-to hover:dark:bg-gradient-to-tr hover:dark:from-sky-500 hover:dark:via-cyan-700 hover:dark:to-blue-500'
         )}
         onClick={() => {
           playpageChange()

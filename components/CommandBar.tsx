@@ -18,6 +18,7 @@ import clsx from 'classnames';
 import { allBlogs, allSnippets } from 'contentlayer/generated';
 import { parseISO, format } from 'date-fns';
 import type { Blog, Snippet } from 'contentlayer/generated';
+import { AnimatePresence , motion } from 'framer-motion'
 const animatorStyle = {
   maxWidth: '600px',
   width: '100%',
@@ -45,7 +46,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         name: 'Home',
         shortcut: ['h'],
         keywords: 'back',
-        section: 'Navigation',
+        
         icon: <Home width={16} height={16} />,
         perform: () => router.push('/'),
       },
@@ -53,7 +54,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
       //   id: 'blogAction',
       //   name: 'Blog',
       //           perform: () => router.push('/blog/'),
-      //   section: 'Navigation',
+      //   
       // },
       {
         id: 'guestbookAction',
@@ -61,7 +62,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['g', 'b'],
         icon: <BookOpen width={16} height={16} />,
         perform: () => router.push('/guestbook/'),
-        section: 'Navigation',
+        
       },
       {
         id: 'aboutAction',
@@ -69,7 +70,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['a'],
         icon: <User width={16} height={16} />,
         perform: () => router.push('/about/'),
-        section: 'Navigation',
+        
       },
       {
         id: 'usesAction',
@@ -77,7 +78,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['u'],
         icon: <Tool width={16} height={16} />,
         perform: () => router.push('/uses'),
-        section: 'Navigation',
+        
       },
       {
         id: 'generalAction',
@@ -115,6 +116,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
       {
         id: 'emailAction',
         name: 'Email',
+        subtitle: 'contact@heykapil.in',
         shortcut: ['e'],
         keywords: 'send-email',
         parent: 'socialAction',
@@ -124,6 +126,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
       {
         id: 'githubAction',
         name: 'Github',
+        subtitle: '@heykapil',
         shortcut: ['g'],
         keywords: 'go-github',
         parent: 'socialAction',
@@ -133,6 +136,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
       {
         id: 'twitterAction',
         name: 'Twitter',
+        subtitle: '@kapiljch',
         shortcut: ['t'],
         keywords: 'go-twitter',
         parent: 'socialAction',
@@ -190,15 +194,31 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
     return actions
   }, [router])
   return (
+    <AnimatePresence exitBeforeEnter>
     <KBarProvider
       actions={actions}
       options={{
         enableHistory: true
       }}
     >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: {
+            duration: 0.1,
+          },
+        }}
+        exit={{
+          opacity: 0,
+          transition: {
+            duration: 0.1,
+          },
+        }} 
+        className='' />
       <KBarPortal>
         <KBarPositioner className="fixed inset-0 z-50 animate-overlayShow bg-black bg-opacity-60 backdrop-blur-sm backdrop-filter">
-          <KBarAnimator className="w-full max-w-2xl rounded-lg overflow-hidden bg-gray-50 dark:bg-dark invisible-scrollbar" style={animatorStyle}>
+          <KBarAnimator className="w-full max-w-2xl rounded-lg overflow-hidden bg-gray-50 dark:bg-dark" style={animatorStyle}>
             <div className="flex items-center space-x-4 p-4">
                 <span className="block">
                   <Search width={20} height={20} />
@@ -214,6 +234,7 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
       </KBarPortal>
       {children}
     </KBarProvider>
+    </AnimatePresence>
   )
 }
 
@@ -266,7 +287,7 @@ const ResultItem = React.forwardRef(({ action, active, currentRootActionId }:
       ref={ref}
       className={clsx(
         'px-4 py-2 flex font-medium items-center justify-between cursor-pointer rounded transition-all duration-200 ease-in-out dark:bg-dark', {
-        'bg-gradient-to-r from-rose-100 via-pink-200 to-orange-100 dark:bg-gradient-to-r dark:from-purple-500 dark:via-fuchsia-500 dark:to-pink-500': active
+        'rounded-lg bg-gradient-to-r from-rose-100 via-pink-200 to-orange-100 dark:bg-gradient-to-r dark:from-purple-500 dark:via-fuchsia-500 dark:to-pink-500': active
       }
       )}
     >
@@ -309,7 +330,7 @@ const ResultItem = React.forwardRef(({ action, active, currentRootActionId }:
           {action.shortcut.map((sc) => (
             <kbd
               key={sc}
-              className='bg-gray-200 dark:bg-gray-800 dark:text-white text-black'
+              className='rounded-lg bg-gray-200 dark:bg-gray-800 dark:text-white text-black'
               style={{
                 padding: "4px 6px",
                 borderRadius: "4px",

@@ -6,6 +6,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      backgroundImage: {
+        noise: "url('../public/static/noise.svg')"
+      },
       colors: {
         'blue-opaque': 'rgb(13 42 148 / 18%)',
         primary: colors.fuchsia,

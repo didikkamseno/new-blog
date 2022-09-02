@@ -318,3 +318,25 @@ label {
 .invisible-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+.texture {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100%;
+  height: calc(100vh + 200px);
+  opacity: 0.25;
+  pointer-events: none;
+  transform: translateY(0px);
+  filter: contrast(120%) brightness(120%);
+}

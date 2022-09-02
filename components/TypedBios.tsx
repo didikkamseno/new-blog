@@ -80,7 +80,7 @@ const TypedBios = () => {
           {/* <Twemoji emoji="video-game" /> */}
         </li>
       </ul>
-      <span ref={el} className="text-zinc-700 dark:text-zinc-400" />
+      <span ref={el} className="text-gray-700 dark:text-gray-200" />
     </div>
   )
 }
