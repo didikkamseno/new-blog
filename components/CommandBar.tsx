@@ -68,7 +68,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['a'],
         icon: <User width={16} height={16} />,
         perform: () => router.push('/about/'),
-        
       },
       {
         id: 'usesAction',
@@ -76,7 +75,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['u'],
         icon: <Tool width={16} height={16} />,
         perform: () => router.push('/uses'),
-        
       },
       {
         id: 'generalAction',
