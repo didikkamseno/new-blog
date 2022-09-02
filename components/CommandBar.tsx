@@ -46,10 +46,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         name: 'Home',
         shortcut: ['h'],
         keywords: 'back',
-<<<<<<< HEAD
-        
-=======
->>>>>>> d04aa8596edc83266d14fa6b4722c821ff4f46e5
         icon: <Home width={16} height={16} />,
         perform: () => router.push('/'),
       },
@@ -65,10 +61,6 @@ export const CommandBar: FC<{ children: ReactNode }> = ({ children }) => {
         shortcut: ['g', 'b'],
         icon: <BookOpen width={16} height={16} />,
         perform: () => router.push('/guestbook/'),
-<<<<<<< HEAD
-        
-=======
->>>>>>> d04aa8596edc83266d14fa6b4722c821ff4f46e5
       },
       {
         id: 'aboutAction',
