@@ -1,0 +1,30 @@
+const Gradient = {
+    '0': ' from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
+    '1': ' from-[#D8B4FE] to-[#818CF8]',
+    '2': ' from-[#6EE7F9] to-[#6EE7B7]',
+    '3': ' from-[#2E3192] to-[#1BFFFF]',
+    '4': ' from-[#D4145A] to-[#FBB03B]',
+    '5': ' from-[#009245] to-[#FCEE21]',
+    '6': ' from-[#662D8C] to-[#ED1E79]',
+    '7': ' from-[#EE9CA7] to-[#FFDDE1]',
+    '8': ' from-[#D8B4FE] to-[#818CF8]',
+    '9': ' from-[#FF512F] to-[#DD2476]',
+    '10': ' from-[#C6EA8D] to-[#FE90AF]',
+    '11': ' from-[#D8B5FF] to-[#1EAE98]',
+    '12': ' from-[#FF61D2] to-[#FE9090]',
+    '13': ' from-[#EE9CA7] to-[#FFDDE1]',
+    '14': ' from-[#BFF098] to-[#6FD6FF]',
+    '15': ' from-[#4E65FF] to-[#92EFFD]',
+    '16': ' from-[#A9F1DF] to-[#FFBBBB]',
+    '17': ' from-[#C33764] to-[#1D2671]',
+    '18': ' from-[#93A5CF] to-[#E4EfE9]',
+    '19': ' from-[#868F96] to-[#596164]',
+    '20': ' from-[#09203F] to-[#537895]',
+    '21': ' from-[#FFECD2] to-[#FCB69F]',
+    '22': ' from-[#A1C4FD] to-[#C2E9FB]',
+    '23': ' from-[#764BA2] to-[#667EEA]',
+    '24': ' from-[#FDFCFB] to-[#E2D1C3]',
+  };
+
+export default Gradient;
+  

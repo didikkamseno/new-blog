@@ -79,8 +79,7 @@ export default function Home() {
               <BlogPostCard
                 title="CSIR NEWFMS Portal Guide"
                 slug="csir-newfms-guide-1"
-                gradient="from-[#D8B4FE] to-[#818CF8]"
-              />
+               />
               {/* <BlogPostCard
                 title="Rust Is The Future of JavaScript Infrastructure"
                 slug=""
@@ -89,8 +88,11 @@ export default function Home() {
               <BlogPostCard
                 title="Practice Questions"
                 slug="practice-questions-matrix-algebra-mat411pr"
-                gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
-              /> 
+               /> 
+               <BlogPostCard
+                title="First post"
+                slug="hello-world"
+               /> 
             </div>
             {/* <Link href="/blog">
               <a className="flex mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6">
