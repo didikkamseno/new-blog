@@ -319,7 +319,7 @@ label {
   display: none;
 }
 
-svg {
+/* svg {
   display: inline-block;
   vertical-align: middle;
 }
@@ -339,4 +339,4 @@ svg:not(:root) {
   pointer-events: none;
   transform: translateY(0px);
   filter: contrast(120%) brightness(120%);
-}
+} */
