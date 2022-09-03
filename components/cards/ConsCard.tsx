@@ -8,7 +8,6 @@ export default function ConsCard({ title, cons }) {
             <div className="h-4 w-4 mr-2">
               <svg className="h-4 w-4 text-red-500" viewBox="0 0 24 24">
                 <g
-                  fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"

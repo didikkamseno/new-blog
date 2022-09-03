@@ -8,7 +8,6 @@ export default function ProsCard({ title, pros }) {
             <div className="h-4 w-4 mr-2">
               <svg className="h-4 w-4 text-green-500" viewBox="0 0 24 24">
                 <g
-                  fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"

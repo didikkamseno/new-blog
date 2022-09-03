@@ -21,7 +21,7 @@ class MyDocument extends Document {
        <link
           rel="preload"
           href="/fonts/ibm-plex-sans-var.woff2"
-          as="font"
+          // as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
