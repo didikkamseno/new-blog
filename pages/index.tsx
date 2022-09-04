@@ -75,22 +75,18 @@ export default function Home() {
               Featured Posts
             </h3>
             <div className="flex gap-6 flex-col md:flex-row">
+              
+            <BlogPostCard
+                title="Building a command bar for my website"
+                slug="building-command-bar-kbar"
+               /> 
               <BlogPostCard
                 title="CSIR NEWFMS Portal Guide"
                 slug="csir-newfms-guide-1"
                />
-              {/* <BlogPostCard
-                title="Rust Is The Future of JavaScript Infrastructure"
-                slug=""
-                gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
-              /> */}
               <BlogPostCard
                 title="Practice Questions"
                 slug="practice-questions-matrix-algebra-mat411pr"
-               /> 
-               <BlogPostCard
-                title="First post"
-                slug="hello-world"
                /> 
             </div>
             {/* <Link href="/blog">

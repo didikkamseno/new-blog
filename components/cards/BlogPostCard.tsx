@@ -12,11 +12,11 @@ export default function BlogPostCard({ title, slug }) {
       <a
         className={cn(
           'transform hover:scale-[1.01] transition-all',
-          'group rounded-lg w-full bg-gradient-to-r p-4',
+          'group rounded-lg w-full bg-gradient-to-r p-2 md:p-4',
         )}
       >
         <div className={cn(
-        'absolute inset-4 rounded-lg bg-gradient-to-r blur-sm transition duration-1000 group-hover:-inset-[0.5] group-hover:blur-md group-hover:duration-500',
+        'absolute inset-2 md:inset-4 rounded-lg bg-gradient-to-r blur-sm transition duration-1000 group-hover:-inset-[0.5] group-hover:blur-md group-hover:duration-500',
         Gradient[Math.floor(Math.random() * (25))]
         )}
         > </div>
