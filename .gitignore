@@ -12,3 +12,5 @@ public/feed.xml
 .contentlayer
 
 .vercel
+pnpm-lock.yaml
+

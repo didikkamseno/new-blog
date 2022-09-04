@@ -11,9 +11,9 @@ export default function FunctionCard({
 }) 
 {
   return (
-    <Link href={`/snippets/${slug}`} className="group relative w-full   transform transition-all hover:scale-[1.05] md:w-1/3">
+    <Link href={`/snippets/${slug}`}>
       <a
-        className="  text-gray-900 dark:text-gray-100  rounded-lg p-4 w-full  transform hover:scale-[1.025] transition-all"
+        className=" group relative text-gray-900 dark:text-gray-100  rounded-lg p-4 w-full  transform hover:scale-[1.025] transition-all"
         {...rest}
       >
         <div className={

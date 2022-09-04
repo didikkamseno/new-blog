@@ -1,28 +1,28 @@
 import Link from 'next/link';
 import useSWR from 'swr';
 import cn from 'classnames';
-
 import fetcher from 'lib/fetcher';
 import { Views } from 'lib/types';
 import Gradient from './../Gradient';
 export default function BlogPostCard({ title, slug }) {
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const views = data?.total;
-
   return (
-    <Link href={`/blog/${slug}`} className='group relative'>
+    <Link href={`/blog/${slug}`}>
       <a
         className={cn(
           'transform hover:scale-[1.01] transition-all',
-          'rounded-lg w-full md:w-1/3 bg-gradient-to-r',
+          'group rounded-lg w-full bg-gradient-to-r p-4',
         )}
       >
-        <div className={
-        `absolute inset-0 rounded-lg bg-gradient-to-r blur-sm transition duration-1000 group-hover:-inset-[0.5] group-hover:blur-md group-hover:duration-500`
-        +
-        Gradient[Math.floor(Math.random() * (25))]}
-    > </div>
-    <div className="relative flex h-full flex-col justify-between  rounded-xl bg-gray-50 p-6 dark:bg-dark">
+        <div className={cn(
+        'absolute inset-4 rounded-lg bg-gradient-to-r blur-sm transition duration-1000 group-hover:-inset-[0.5] group-hover:blur-md group-hover:duration-500',
+        Gradient[Math.floor(Math.random() * (25))]
+        )}
+        > </div>
+        <div className='relative block h-full'>
+     <div
+      className="flex flex-col justify-between h-full bg-white dark:bg-gray-900 rounded-lg p-8">
           <div className="flex flex-col md:flex-row justify-between">
             <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full text-gray-900 dark:text-gray-100 tracking-tight">
               {title}
@@ -53,6 +53,7 @@ export default function BlogPostCard({ title, slug }) {
               {views ? new Number(views).toLocaleString() : '–––'}
             </span>
           </div>
+        </div>
         </div>
       </a>
     </Link>
