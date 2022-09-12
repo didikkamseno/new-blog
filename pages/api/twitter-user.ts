@@ -1,7 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { getUser } from 'lib/twitter'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (req, res) => {
+export default async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   const response = await getUser('kapiljch')
   const { data } = response
 

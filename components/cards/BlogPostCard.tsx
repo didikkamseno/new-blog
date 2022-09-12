@@ -22,7 +22,7 @@ export default function BlogPostCard({ title, slug }) {
         > </div>
         <div className='relative block h-full'>
      <div
-      className="flex flex-col justify-between h-full bg-white dark:bg-gray-900 rounded-lg p-8">
+      className="flex flex-col justify-between h-full bg-white dark:bg-gray-900 rounded-lg p-8 border border-neutral-200 dark:border dark:border-neutral-800 hover:border-none dark:hover:border-none">
           <div className="flex flex-col md:flex-row justify-between">
             <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full text-gray-900 dark:text-gray-100 tracking-tight">
               {title}

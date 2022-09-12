@@ -23,3 +23,8 @@ model guestbook {
   created_at DateTime @default(now()) @db.DateTime(6)
   updated_at DateTime @default(now()) @db.DateTime(6)
 }
+
+model Image {
+  url   String @id @unique
+  image String
+}
